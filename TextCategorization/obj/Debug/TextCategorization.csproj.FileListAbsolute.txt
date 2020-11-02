@@ -1,0 +1,10 @@
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\TextCategorization.dll
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\TextCategorization.pdb
+D:\Projects\github\nlp-text-categorization\TextCategorization\obj\Debug\TextCategorization.csprojAssemblyReference.cache
+D:\Projects\github\nlp-text-categorization\TextCategorization\obj\Debug\TextCategorization.csproj.CoreCompileInputs.cache
+D:\Projects\github\nlp-text-categorization\TextCategorization\obj\Debug\TextCategorization.dll
+D:\Projects\github\nlp-text-categorization\TextCategorization\obj\Debug\TextCategorization.pdb
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Preprocessing.dll
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\LemmaSharp.dll
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Preprocessing.pdb
+D:\Projects\github\nlp-text-categorization\TextCategorization\obj\Debug\TextCategorization.csproj.CopyComplete

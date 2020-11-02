@@ -1,0 +1,13 @@
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Demo.exe.config
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Demo.exe
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Demo.pdb
+D:\Projects\github\nlp-text-categorization\Demo\obj\Debug\Demo.csprojAssemblyReference.cache
+D:\Projects\github\nlp-text-categorization\Demo\obj\Debug\Demo.csproj.CoreCompileInputs.cache
+D:\Projects\github\nlp-text-categorization\Demo\obj\Debug\Demo.exe
+D:\Projects\github\nlp-text-categorization\Demo\obj\Debug\Demo.pdb
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\TextCategorization.dll
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\TextCategorization.pdb
+D:\Projects\github\nlp-text-categorization\Demo\obj\Debug\Demo.csproj.CopyComplete
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Preprocessing.dll
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\LemmaSharp.dll
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Preprocessing.pdb

@@ -1,0 +1,8 @@
+D:\Projects\github\nlp-text-categorization\Preprocessing\bin\Debug\Preprocessing.dll
+D:\Projects\github\nlp-text-categorization\Preprocessing\bin\Debug\Preprocessing.pdb
+D:\Projects\github\nlp-text-categorization\Preprocessing\bin\Debug\LemmaSharp.dll
+D:\Projects\github\nlp-text-categorization\Preprocessing\obj\Debug\Preprocessing.csprojAssemblyReference.cache
+D:\Projects\github\nlp-text-categorization\Preprocessing\obj\Debug\Preprocessing.csproj.CoreCompileInputs.cache
+D:\Projects\github\nlp-text-categorization\Preprocessing\obj\Debug\Preprocessing.csproj.CopyComplete
+D:\Projects\github\nlp-text-categorization\Preprocessing\obj\Debug\Preprocessing.dll
+D:\Projects\github\nlp-text-categorization\Preprocessing\obj\Debug\Preprocessing.pdb
