@@ -11,3 +11,5 @@ D:\Projects\github\nlp-text-categorization\Demo\obj\Debug\Demo.csproj.CopyComple
 D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Preprocessing.dll
 D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\LemmaSharp.dll
 D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Preprocessing.pdb
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\LearningModel.dll
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\LearningModel.pdb

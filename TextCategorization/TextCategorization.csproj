@@ -45,10 +45,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LearningModel\LearningModel.csproj">
+      <Project>{6c2efae1-c614-4489-98ba-d6795bddd98f}</Project>
+      <Name>LearningModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Preprocessing\Preprocessing.csproj">
       <Project>{0977237b-d70e-4a80-b063-c6b929d5d50d}</Project>
       <Name>Preprocessing</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="files\Reuters_Big\" />
+    <Folder Include="files\Reuters_Small\" />
+    <Folder Include="files\test\" />
+    <Folder Include="output\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

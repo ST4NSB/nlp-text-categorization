@@ -8,3 +8,5 @@ D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Preproce
 D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\LemmaSharp.dll
 D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Preprocessing.pdb
 D:\Projects\github\nlp-text-categorization\TextCategorization\obj\Debug\TextCategorization.csproj.CopyComplete
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\LearningModel.dll
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\LearningModel.pdb

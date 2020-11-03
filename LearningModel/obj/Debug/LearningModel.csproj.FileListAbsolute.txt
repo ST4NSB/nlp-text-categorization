@@ -1,0 +1,6 @@
+D:\Projects\github\nlp-text-categorization\LearningModel\bin\Debug\LearningModel.dll
+D:\Projects\github\nlp-text-categorization\LearningModel\bin\Debug\LearningModel.pdb
+D:\Projects\github\nlp-text-categorization\LearningModel\obj\Debug\LearningModel.csprojAssemblyReference.cache
+D:\Projects\github\nlp-text-categorization\LearningModel\obj\Debug\LearningModel.csproj.CoreCompileInputs.cache
+D:\Projects\github\nlp-text-categorization\LearningModel\obj\Debug\LearningModel.dll
+D:\Projects\github\nlp-text-categorization\LearningModel\obj\Debug\LearningModel.pdb
