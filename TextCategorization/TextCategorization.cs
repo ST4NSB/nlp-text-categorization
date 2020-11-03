@@ -12,9 +12,10 @@ namespace NLP.TextCategorization
     {
         private XmlDocument _xmlDoc;
         private TextModel _textModel;
-        private string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).
+        private string _path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).
                                     Parent.Parent.FullName, @"TextCategorization\");
 
+        //TODO: GET GET TRUE CATEGORY
 
         public TextCategorization()
         {
@@ -134,7 +135,7 @@ namespace NLP.TextCategorization
 
         private IEnumerable<string> GetAllFilesFromDir(string dirpath)
         {
-            var fullpath = Path.Combine(path, @"files\", dirpath);
+            var fullpath = Path.Combine(_path, @"files\", dirpath);
             var fileEntries = Directory.GetFiles(fullpath);
 
             foreach (var fileName in fileEntries)
@@ -145,7 +146,7 @@ namespace NLP.TextCategorization
 
         private void CreateAndWriteToTextFile(List<string> text)
         {
-            var guid = path + @"output\out_" + Guid.NewGuid().ToString() + ".txt";
+            var guid = _path + @"output\out_" + Guid.NewGuid().ToString() + ".txt";
             using (TextWriter tw = new StreamWriter(guid))
             {
                 foreach (var item in text)
