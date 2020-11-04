@@ -5,6 +5,7 @@ using System.IO;
 using System.Xml;
 using LearningModel;
 using System.Linq;
+using NLP;
 
 namespace NLP.TextCategorization
 {
@@ -16,6 +17,19 @@ namespace NLP.TextCategorization
                                     Parent.Parent.FullName, @"TextCategorization\");
 
         //TODO: GET GET TRUE CATEGORY
+
+        // + BEAUTIFY SETUP FOR output and json saved models (if doesnt find the json then process)
+
+
+
+
+
+
+
+
+
+
+
 
         public TextCategorization()
         {
@@ -29,11 +43,16 @@ namespace NLP.TextCategorization
             {
                 _xmlDoc.Load(fullText);
                 var categories = ParseCategories();
-                var text = ParseTitleAndText();
-                var preProcessedList = Pipeline.Create(text);
+                var textLines = ParseTitleAndText();
+                var processedList = Pipeline.Create(textLines, filter: new string[] { "NN" }, resultMinLength: 2);
 
-                ProcessTextModel(preProcessedList, categories);
+                ProcessTextModel(processedList, categories);
+                Console.WriteLine("Processed " + fullText);
             }
+
+            // save in file
+            ShowGlobalListOfWords();
+            ShowAllDocumentsCategoryAndWordFrequence();
         }
 
         private void ProcessTextModel(IEnumerable<string> preProcessedList, string categories)
@@ -76,7 +95,7 @@ namespace NLP.TextCategorization
             {
                 globalListOutput.Add(_textModel.GlobalWords.IndexOf(item).ToString() + " : " + item);
             }
-            CreateAndWriteToTextFile(globalListOutput);
+            CreateAndWriteToTextFile("global", globalListOutput);
             return globalListOutput;
         }
 
@@ -103,19 +122,27 @@ namespace NLP.TextCategorization
                 }
                 globalListOutput.Add("Categories: " + categories + "\r\n" + "Word Count: " + wordCount);
             }
-            CreateAndWriteToTextFile(globalListOutput);
+            CreateAndWriteToTextFile("local", globalListOutput);
             return globalListOutput;
         }
 
-        private string ParseTitleAndText()
+        private List<string> ParseTitleAndText()
         {
             var title = _xmlDoc.SelectSingleNode("/newsitem/title").InnerText;
             var textXML = _xmlDoc.SelectNodes("/newsitem/text/p");
 
-            var parsedText = title;
+            var parsedText = new List<string>();
+            if(!string.IsNullOrEmpty(title.Trim()))
+            {
+                parsedText.Add(title);
+            }
+
             for(var i = 0; i < textXML.Count; ++i)
             {
-                parsedText += textXML[i].InnerText;
+                if (!string.IsNullOrEmpty(textXML[i].InnerText.Trim()))
+                {
+                    parsedText.Add(textXML[i].InnerText);
+                }
             }
 
             return parsedText;
@@ -144,9 +171,13 @@ namespace NLP.TextCategorization
             }
         }
 
-        private void CreateAndWriteToTextFile(List<string> text)
+        private void CreateAndWriteToTextFile(string filename, List<string> text)
         {
-            var guid = _path + @"output\out_" + Guid.NewGuid().ToString() + ".txt";
+            var date = DateTime.Now.ToString();
+            date = date.Replace('/', '-');
+            date = date.Replace(':', '-');
+            date = date.Replace(' ', '_');
+            var guid = _path + @"output\[" + date + "]" + filename + ".txt";
             using (TextWriter tw = new StreamWriter(guid))
             {
                 foreach (var item in text)

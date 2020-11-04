@@ -6,3 +6,7 @@ D:\Projects\github\nlp-text-categorization\Preprocessing\obj\Debug\Preprocessing
 D:\Projects\github\nlp-text-categorization\Preprocessing\obj\Debug\Preprocessing.csproj.CopyComplete
 D:\Projects\github\nlp-text-categorization\Preprocessing\obj\Debug\Preprocessing.dll
 D:\Projects\github\nlp-text-categorization\Preprocessing\obj\Debug\Preprocessing.pdb
+D:\Projects\github\nlp-text-categorization\Preprocessing\bin\Debug\Nlp-PosTagger.dll
+D:\Projects\github\nlp-text-categorization\Preprocessing\bin\Debug\Nlp-PosTagger.pdb
+D:\Projects\github\nlp-text-categorization\Preprocessing\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\github\nlp-text-categorization\Preprocessing\bin\Debug\Newtonsoft.Json.xml

@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using Preprocessing.Normalization;
 using Preprocessing.Cleaning;
 using System.Linq;
+using Preprocessing.FeatureSelection;
 
 namespace Preprocessing
 {
-    public class Pipeline
+    public static class Pipeline
     {
         private static List<string> Tokenize(string input)
         {
@@ -30,18 +29,35 @@ namespace Preprocessing
             return wordsOutput;
         }
 
-
-        public static IEnumerable<string> Create(string text)
+        public static IEnumerable<string> Create(List<string> nodes, string[] filter, int resultMinLength)
         {
-            // TODO
-            // part of speech + tolower + lemma then return
-            foreach (var token in Tokenize(text))
+            // old code
+            //foreach (var node in nodes)
+            //{
+            //    foreach (var token in Tokenize(node))
+            //    {
+            //        string lowerToken = token.ToLower(); // Can = can
+            //        if (!Stopwords.GetStopWordsList().Contains(lowerToken))
+            //        {
+            //            string stemWord = new PorterStemmer().StemWord(lowerToken);
+            //            yield return stemWord;
+            //        }
+            //    }
+            //}
+
+            foreach (var text in nodes)
             {
-                string lowerToken = token.ToLower(); // Can = can
-                if (!Stopwords.GetStopWordsList().Contains(lowerToken))
+                var posSentence = PartOfSpeech.GetPartsOfSpeechOfSentence(text);
+                foreach (var posWord in posSentence)
                 {
-                    string stemWord = new PorterStemmer().StemWord(lowerToken);
-                    yield return stemWord;
+                    Console.WriteLine("!!!!!                         " + posWord.word + " -> " + posWord.tag);
+                    if (filter.Contains(posWord.tag)
+                        && posWord.word.Length > resultMinLength)   // FILTER = TAG
+                    {
+                        yield return posWord.word.ToLower()
+                                                 .Lemmatize()
+                                                 .RemoveApostrof();
+                    }
                 }
             }
         }

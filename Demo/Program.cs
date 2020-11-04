@@ -1,5 +1,6 @@
 ﻿using NLP.TextCategorization;
 using System;
+using System.Diagnostics;
 
 namespace Demo
 {
@@ -8,22 +9,28 @@ namespace Demo
         static void Main(string[] args)
         {
             TextCategorization tc = new TextCategorization();
-            tc.Process("Reuters_Big");
+
+            var watch = Stopwatch.StartNew();
+            tc.Process(@"test");
+            watch.Stop();
+            Console.WriteLine("Time till end: ");
+            Console.WriteLine("Minutes: " + watch.Elapsed.TotalMinutes);
+            Console.WriteLine("Seconds: " + watch.Elapsed.TotalSeconds);
+            Console.WriteLine("Milliseconds: " + watch.Elapsed.TotalMilliseconds);
 
 
+            //foreach (var item in tc.ShowGlobalListOfWords())
+            //{
+            //    Console.WriteLine(item);
+            //}
 
-            foreach(var item in tc.ShowGlobalListOfWords())
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine();
+            //Console.WriteLine();
 
 
-            foreach (var item in tc.ShowAllDocumentsCategoryAndWordFrequence())
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in tc.ShowAllDocumentsCategoryAndWordFrequence())
+            //{
+            //    Console.WriteLine(item);
+            //}
         }
     }
 }
