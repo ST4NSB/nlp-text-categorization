@@ -83,8 +83,11 @@ namespace Preprocessing.FeatureSelection
                     inputTest.Add(new Tokenizer.WordTag(item, "."));
                 else inputTest.Add(new Tokenizer.WordTag(item, ""));
             }
-            if (inputTest[inputTest.Count - 1].tag != ".") // safe case check
-                inputTest.Add(new Tokenizer.WordTag(".", "."));
+            if(inputTest.Count >= 1)
+            {
+                if (inputTest[inputTest.Count - 1].tag != ".") // safe case check
+                    inputTest.Add(new Tokenizer.WordTag(".", "."));
+            }
 
             var sentences = new List<List<Tokenizer.WordTag>>();
             var sentc = new List<Tokenizer.WordTag>();
@@ -94,7 +97,7 @@ namespace Preprocessing.FeatureSelection
 
                 if (string.Equals(item.tag, "."))
                 {
-                    if (sentc.Count > 2)
+                    if (sentc.Count > 1)
                     {
                         sentences.Add(sentc);
                     }

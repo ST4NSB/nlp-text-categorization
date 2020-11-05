@@ -10,27 +10,16 @@ namespace Demo
         {
             TextCategorization tc = new TextCategorization();
 
+            //tc.WipeCheckpoints();
+
             var watch = Stopwatch.StartNew();
-            tc.Process(@"test");
+            tc.Process(@"Reuters_Big");
             watch.Stop();
+            
             Console.WriteLine("Time till end: ");
             Console.WriteLine("Minutes: " + watch.Elapsed.TotalMinutes);
             Console.WriteLine("Seconds: " + watch.Elapsed.TotalSeconds);
             Console.WriteLine("Milliseconds: " + watch.Elapsed.TotalMilliseconds);
-
-
-            //foreach (var item in tc.ShowGlobalListOfWords())
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-            //Console.WriteLine();
-
-
-            //foreach (var item in tc.ShowAllDocumentsCategoryAndWordFrequence())
-            //{
-            //    Console.WriteLine(item);
-            //}
         }
     }
 }

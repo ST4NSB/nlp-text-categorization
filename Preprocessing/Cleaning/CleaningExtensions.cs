@@ -10,5 +10,10 @@ namespace Preprocessing.Cleaning
         {
             return text.Replace("\'", string.Empty);
         }
+
+        public static string RemoveLine(this string text)
+        {
+            return text.Replace("/", string.Empty);
+        }
     }
 }

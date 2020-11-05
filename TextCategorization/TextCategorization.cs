@@ -6,6 +6,8 @@ using System.Xml;
 using LearningModel;
 using System.Linq;
 using NLP;
+using CategoryConverter;
+using Newtonsoft.Json;
 
 namespace NLP.TextCategorization
 {
@@ -16,31 +18,30 @@ namespace NLP.TextCategorization
         private string _path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).
                                     Parent.Parent.FullName, @"TextCategorization\");
 
-        //TODO: GET GET TRUE CATEGORY
-
-        // + BEAUTIFY SETUP FOR output and json saved models (if doesnt find the json then process)
-
-
-
-
-
-
-
-
-
-
-
-
         public TextCategorization()
         {
             _xmlDoc = new XmlDocument();
             _textModel = new TextModel();
         }
 
-        public void Process(string dirpath)
+        public void Process(string dirpath, bool wipeCheckpoints = false)
         {
+            if (wipeCheckpoints)
+            {
+                WipeCheckpoints();
+            }
+
+            var checkpoints = LoadCheckpointsAndModel();
+
             foreach (var fullText in GetAllFilesFromDir(dirpath))
             {
+                var fileName = fullText.Split('\\').Last();
+
+                if (checkpoints.Contains(fileName))
+                {
+                    Console.WriteLine("Already processed " + fullText);
+                    continue;
+                }
                 _xmlDoc.Load(fullText);
                 var categories = ParseCategories();
                 var textLines = ParseTitleAndText();
@@ -48,11 +49,60 @@ namespace NLP.TextCategorization
 
                 ProcessTextModel(processedList, categories);
                 Console.WriteLine("Processed " + fullText);
+
+                SaveCheckpointModel(fileName);
+            }            
+        }
+
+        public void WipeCheckpoints()
+        {
+            var dir = new DirectoryInfo(_path + @"files\model");
+
+            foreach (var fi in dir.GetFiles())
+            {
+                fi.Delete();
             }
 
-            // save in file
-            ShowGlobalListOfWords();
-            ShowAllDocumentsCategoryAndWordFrequence();
+            var dirProcessed = new DirectoryInfo(_path + @"files\model\processed");
+
+            foreach (var fi in dirProcessed.GetFiles())
+            {
+                fi.Delete();
+            }
+
+            using (File.Create(_path + @"files\model\checkpoints.txt")) ;
+        }
+
+        private string[] LoadCheckpointsAndModel()
+        {
+            var checkpoints = File.ReadAllLines(_path + @"files\model\checkpoints.txt");
+
+            if (checkpoints.Length > 0)
+            {
+                var global = File.ReadAllText(_path + @"files\model\global.json");
+                var local = File.ReadAllText(_path + @"files\model\local.json");
+
+                _textModel.GlobalWords = JsonConvert.DeserializeObject<List<string>>(global);
+                _textModel.CategoryClassifierObject = JsonConvert.DeserializeObject<List<TextModel.CategoryClassifier>>(local);
+            }
+
+            return checkpoints;
+        }
+
+        private void SaveCheckpointModel(string fileName)
+        {
+            using (StreamWriter writetext = File.AppendText(_path + @"files\model\checkpoints.txt"))
+            {
+                writetext.WriteLine(fileName);
+            }
+
+            var globalModel = JsonConvert.SerializeObject(_textModel.GlobalWords);
+            var localModel = JsonConvert.SerializeObject(_textModel.CategoryClassifierObject);
+            File.WriteAllText(_path + @"files\model\global.json", globalModel);
+            File.WriteAllText(_path + @"files\model\local.json", localModel);
+
+            SaveGlobalListOfWords(fileName);
+            SaveAllDocumentsCategoryAndWordFrequence(fileName);
         }
 
         private void ProcessTextModel(IEnumerable<string> preProcessedList, string categories)
@@ -87,7 +137,7 @@ namespace NLP.TextCategorization
             _textModel.CategoryClassifierObject.Add(catCl);
         }
 
-        public List<string> ShowGlobalListOfWords()
+        private void SaveGlobalListOfWords(string fileName)
         {
             var globalListOutput = new List<string>();
             globalListOutput.Add("There are currently " + _textModel.GlobalWords.Count + " unique words in all documents!");
@@ -95,35 +145,56 @@ namespace NLP.TextCategorization
             {
                 globalListOutput.Add(_textModel.GlobalWords.IndexOf(item).ToString() + " : " + item);
             }
-            CreateAndWriteToTextFile("global", globalListOutput);
-            return globalListOutput;
+            CreateAndWriteToTextFile("global_" + fileName, globalListOutput);
+        }
+
+        private void SaveAllDocumentsCategoryAndWordFrequence(string fileName, bool beautify = true)
+        {
+            var globalListOutput = new List<string>();
+            globalListOutput.Add("There are currently " + _textModel.CategoryClassifierObject.Count + " unique documents!");
+
+            if (beautify)
+            {
+                int index = 1;
+                foreach (var item in _textModel.CategoryClassifierObject)
+                {
+                    var categories = "Categories: ";
+                    foreach (var cat in item.Categories)
+                    {
+                        categories += Converter.GetCategoryFullName(cat) + " , ";
+                    }
+                    var wordCount = "Word Count: \r\n";
+                    foreach (var keypair in item.WordCount)
+                    {
+                        wordCount += "\t" + _textModel.GlobalWords[keypair.Key] + " : " + keypair.Value + "\r\n";
+                    }
+                    globalListOutput.Add(index++ + ")\r\n" + categories + "\r\n" + wordCount);
+                }
+            }
+            else
+            {
+                foreach (var item in _textModel.CategoryClassifierObject)
+                {
+                    var categories = "";
+                    foreach (var cat in item.Categories)
+                    {
+                        categories += cat + " , ";
+                    }
+                    var wordCount = "";
+                    foreach (var keypair in item.WordCount)
+                    {
+                        wordCount += keypair.Key + " : " + keypair.Value + " , ";
+                    }
+                    globalListOutput.Add("Categories: " + categories + "\r\n" + "Word Count: " + wordCount);
+                }
+            }
+          
+            CreateAndWriteToTextFile("local_" + fileName, globalListOutput);
         }
 
         public string GetWordForIndex(int index)
         {
             return _textModel.GlobalWords[index];
-        }
-
-        public List<string> ShowAllDocumentsCategoryAndWordFrequence()
-        {
-            var globalListOutput = new List<string>();
-            globalListOutput.Add("There are currently " + _textModel.CategoryClassifierObject.Count + " unique documents!");
-            foreach(var item in _textModel.CategoryClassifierObject)
-            {
-                var categories = "";
-                foreach(var cat in item.Categories)
-                {
-                    categories += cat + " , ";
-                }
-                var wordCount = "";
-                foreach(var keypair in item.WordCount)
-                {
-                    wordCount += keypair.Key + " : " + keypair.Value + " , ";
-                }
-                globalListOutput.Add("Categories: " + categories + "\r\n" + "Word Count: " + wordCount);
-            }
-            CreateAndWriteToTextFile("local", globalListOutput);
-            return globalListOutput;
         }
 
         private List<string> ParseTitleAndText()
@@ -162,7 +233,7 @@ namespace NLP.TextCategorization
 
         private IEnumerable<string> GetAllFilesFromDir(string dirpath)
         {
-            var fullpath = Path.Combine(_path, @"files\", dirpath);
+            var fullpath = Path.Combine(_path, @"files\dataset\", dirpath);
             var fileEntries = Directory.GetFiles(fullpath);
 
             foreach (var fileName in fileEntries)
@@ -177,7 +248,7 @@ namespace NLP.TextCategorization
             date = date.Replace('/', '-');
             date = date.Replace(':', '-');
             date = date.Replace(' ', '_');
-            var guid = _path + @"output\[" + date + "]" + filename + ".txt";
+            var guid = _path + @"files\model\processed\[" + date + "]" + filename + ".txt";
             using (TextWriter tw = new StreamWriter(guid))
             {
                 foreach (var item in text)
