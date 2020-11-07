@@ -77,7 +77,7 @@ namespace NLP.TextCategorization
         {
             var checkpoints = File.ReadAllLines(_path + @"files\model\checkpoints.txt");
 
-            if (checkpoints.Length > 0)
+            if (checkpoints.Any())
             {
                 var global = File.ReadAllText(_path + @"files\model\global.json");
                 var local = File.ReadAllText(_path + @"files\model\local.json");
@@ -199,7 +199,7 @@ namespace NLP.TextCategorization
 
         private List<string> ParseTitleAndText()
         {
-            var title = _xmlDoc.SelectSingleNode("/newsitem/title").InnerText;
+            var title = _xmlDoc.SelectSingleNode("/newsitem/headline").InnerText;
             var textXML = _xmlDoc.SelectNodes("/newsitem/text/p");
 
             var parsedText = new List<string>();
@@ -244,10 +244,9 @@ namespace NLP.TextCategorization
 
         private void CreateAndWriteToTextFile(string filename, List<string> text)
         {
-            var date = DateTime.Now.ToString();
-            date = date.Replace('/', '-');
-            date = date.Replace(':', '-');
-            date = date.Replace(' ', '_');
+            var date = DateTime.Now.ToString().Replace('/', '-')
+                                              .Replace(':', '-')
+                                              .Replace(' ', '_');
             var guid = _path + @"files\model\processed\[" + date + "]" + filename + ".txt";
             using (TextWriter tw = new StreamWriter(guid))
             {

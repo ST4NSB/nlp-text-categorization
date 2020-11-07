@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Text.RegularExpressions;
 
 namespace Preprocessing.Cleaning
 {
@@ -14,6 +12,11 @@ namespace Preprocessing.Cleaning
         public static string RemoveLine(this string text)
         {
             return text.Replace("/", string.Empty);
+        }
+
+        public static string RemoveDuplicateWordConnectionLine(this string text)
+        {
+            return Regex.Replace(text, @"\-\-+", string.Empty);
         }
     }
 }

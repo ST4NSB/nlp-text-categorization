@@ -4,7 +4,7 @@ using System.IO;
 using Newtonsoft.Json;
 using NLP;
 
-namespace Preprocessing.FeatureSelection
+namespace Preprocessing.Pos
 {
     public class PartOfSpeech
     {

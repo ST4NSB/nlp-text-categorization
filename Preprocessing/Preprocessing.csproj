@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FeatureSelection\PartOfSpeech.cs" />
+    <Compile Include="Pos\PartOfSpeech.cs" />
     <Compile Include="Normalization\LemmatizationExtension.cs" />
     <Compile Include="Normalization\PorterStemmer.cs" />
     <Compile Include="Pipeline.cs" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Preprocessing.Normalization;
 using Preprocessing.Cleaning;
 using System.Linq;
-using Preprocessing.FeatureSelection;
+using Preprocessing.Pos;
 
 namespace Preprocessing
 {
@@ -37,11 +37,9 @@ namespace Preprocessing
             //    foreach (var token in Tokenize(node))
             //    {
             //        string lowerToken = token.ToLower(); // Can = can
-            //        if (!Stopwords.GetStopWordsList().Contains(lowerToken))
-            //        {
-            //            string stemWord = new PorterStemmer().StemWord(lowerToken);
-            //            yield return stemWord;
-            //        }
+
+            //        string stemWord = new PorterStemmer().StemWord(lowerToken);
+            //        yield return stemWord;
             //    }
             //}
 
@@ -56,9 +54,10 @@ namespace Preprocessing
                         var processedWord = posWord.word.ToLower()
                                                         .Lemmatize()
                                                         .RemoveApostrof()
-                                                        .RemoveLine();
-                        
-                        if(processedWord.Length > resultMinLength)
+                                                        .RemoveLine()
+                                                        .RemoveDuplicateWordConnectionLine();
+
+                        if (processedWord.Length > resultMinLength)
                         {
                             yield return processedWord;
                         }
