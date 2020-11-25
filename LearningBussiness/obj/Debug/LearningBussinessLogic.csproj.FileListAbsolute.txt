@@ -1,0 +1,9 @@
+D:\Projects\github\nlp-text-categorization\LearningBussiness\obj\Debug\LearningBussinessLogic.csprojAssemblyReference.cache
+D:\Projects\github\nlp-text-categorization\LearningBussiness\obj\Debug\LearningBussinessLogic.csproj.CoreCompileInputs.cache
+D:\Projects\github\nlp-text-categorization\LearningBussiness\bin\Debug\LearningBussiness.dll
+D:\Projects\github\nlp-text-categorization\LearningBussiness\bin\Debug\LearningBussiness.pdb
+D:\Projects\github\nlp-text-categorization\LearningBussiness\bin\Debug\LearningModel.dll
+D:\Projects\github\nlp-text-categorization\LearningBussiness\bin\Debug\LearningModel.pdb
+D:\Projects\github\nlp-text-categorization\LearningBussiness\obj\Debug\LearningBussinessLogic.csproj.CopyComplete
+D:\Projects\github\nlp-text-categorization\LearningBussiness\obj\Debug\LearningBussiness.dll
+D:\Projects\github\nlp-text-categorization\LearningBussiness\obj\Debug\LearningBussiness.pdb

@@ -17,3 +17,5 @@ D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Nlp-PosTagger.dll
 D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Newtonsoft.Json.dll
 D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Nlp-PosTagger.pdb
 D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\LearningBussiness.dll
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\LearningBussiness.pdb

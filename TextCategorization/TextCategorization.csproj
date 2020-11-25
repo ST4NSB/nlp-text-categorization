@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LearningBussiness\LearningBussinessLogic.csproj">
+      <Project>{290fa76a-5f8d-45b8-877a-5f8eae659aae}</Project>
+      <Name>LearningBussinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LearningModel\LearningModel.csproj">
       <Project>{6c2efae1-c614-4489-98ba-d6795bddd98f}</Project>
       <Name>LearningModel</Name>

@@ -8,6 +8,7 @@ using System.Linq;
 using NLP;
 using CategoryConverter;
 using Newtonsoft.Json;
+using LearningBussiness;
 
 namespace NLP.TextCategorization
 {
@@ -51,7 +52,118 @@ namespace NLP.TextCategorization
                 Console.WriteLine("Processed " + fullText);
 
                 SaveCheckpointModel(fileName);
-            }            
+            }
+
+            // here test text model
+            var txtmod = new TextModel
+            {
+                GlobalWords = new List<string> { "dear", "friend", "lunch", "money" },
+                CategoryClassifierObject = new List<TextModel.CategoryClassifier>
+                {
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "normal" },
+                        WordCount = new Dictionary<int, int>
+                        {
+                            { 0, 5 },
+                            { 1, 5 },
+                            { 2, 1 },
+                            { 3, 1 }
+                        }
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "normal" },
+                        WordCount = new Dictionary<int, int>
+                        {
+                            { 0, 2 },
+                            { 1, 0 },
+                            { 2, 1 },
+                            { 3, 0 }
+                        }
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "normal" },
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "normal" },
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "normal" },
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "normal" },
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "normal" },
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "normal" },
+                        WordCount = new Dictionary<int, int>
+                        {
+                            { 0, 1 },
+                            { 1, 0 },
+                            { 2, 1 },
+                            { 3, 0 }
+                        }
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "spam" },
+                        WordCount = new Dictionary<int, int>
+                        {
+                            { 0, 2 },
+                            { 1, 1 },
+                            { 2, 0 },
+                            { 3, 4 }
+                        }
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "spam" },
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "spam" },
+                    },
+                    new TextModel.CategoryClassifier
+                    {
+                        Categories = new List<string> { "spam" },
+                    },
+                }
+            };
+
+            var learn = new NaiveBayes();
+
+
+            var testmod = new TextModel
+            {
+                GlobalWords = new List<string> { "dear", "friend" },
+                CategoryClassifierObject = new List<TextModel.CategoryClassifier>
+                {
+                    new TextModel.CategoryClassifier
+                    {
+                        WordCount = new Dictionary<int, int>
+                        {
+                            {0, 0 },
+                            {7, 0 },
+                        }
+                    }
+                }
+            };
+
+            learn.Fit(txtmod);
+            var tgf = learn.Predict(testmod);
+            foreach(var sd in tgf)
+            {
+                Console.WriteLine(sd);
+            }
         }
 
         public void WipeCheckpoints()

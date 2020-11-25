@@ -4,7 +4,7 @@ namespace CategoryConverter
 {
     public class Converter
     {
-        private static Dictionary<string, string> cat = new Dictionary<string, string>()
+        public static Dictionary<string, string> categoryName = new Dictionary<string, string>()
         {
             { "1POL", "CURRENT NEWS - POLITICS" },
             {"2ECO",    "CURRENT NEWS - ECONOMICS"},
@@ -136,7 +136,7 @@ namespace CategoryConverter
 
         public static string GetCategoryFullName(string category)
         {
-            return cat[category.ToUpper()].TrimStart().TrimEnd();
+            return categoryName[category.ToUpper()].TrimStart().TrimEnd();
         }
     }
 }
