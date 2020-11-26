@@ -13,7 +13,7 @@ namespace Demo
             //tc.WipeCheckpoints();
 
             var watch = Stopwatch.StartNew();
-            tc.Process(@"Reuters_Big");
+            tc.Process(@"Reuters_Small");
             watch.Stop();
             
             Console.WriteLine("Time till end: ");

@@ -7,7 +7,8 @@ namespace LearningBussiness
 {
     public class NaiveBayes : ILearningAlgorithm
     {
-        private const int alpha = 1;
+        private const int _alpha = 1;
+        private int _alphaSize;
 
         private Dictionary<string, double> _priorProbability;
         private Dictionary<string, Dictionary<int, double>> _trainedModel;
@@ -20,35 +21,36 @@ namespace LearningBussiness
             ComputePosteriorProbability(learningModel);
         }
 
-        public IEnumerable<string> Predict(TextModel testModel)
+        public IEnumerable<PredictedModel> Evaluate(TextModel testModel)
         {
-            var size = _priorProbability.Count;
-
             foreach (var test in testModel.CategoryClassifierObject)
             {
                 Dictionary<string, double> predictedClasses = new Dictionary<string, double>();
                 foreach (var tmodel in _trainedModel)
                 {
-                    var proc = _priorProbability[tmodel.Key];
+                    var proc = Math.Log(_priorProbability[tmodel.Key]);
                     foreach(var item in test.WordCount)
                     {
                         if (tmodel.Value.ContainsKey(item.Key))
                         {
-                            proc = proc * tmodel.Value[item.Key];
+                            proc = proc * Math.Log(tmodel.Value[item.Key]);
                         }
                         else
                         {
-                            var valProd = 1.0d;
-                            foreach(var vals in tmodel.Value)
-                            {
-                                valProd *= vals.Value;
-                            }
-                            proc = proc * ((double) alpha / (alpha * size)) * valProd;
+                            proc = proc * Math.Log(((double)_alpha / (_alpha * Math.Pow(_alphaSize, 5))));
                         }
                     }
                     predictedClasses.Add(tmodel.Key, proc);
                 }
-                yield return predictedClasses.OrderByDescending(x => x.Value).First().Key;
+
+                var ordered = predictedClasses.OrderByDescending(x => x.Value);
+                var acPred = new List<string> { ordered.ElementAt(0).Key };
+
+                yield return new PredictedModel
+                {
+                    actual = test.Categories,
+                    predicted = acPred
+                };
             }
         }
 
@@ -58,24 +60,27 @@ namespace LearningBussiness
 
             foreach(var item in learningModel.CategoryClassifierObject)
             {
-                var firstClass = item.Categories.FirstOrDefault();
-                if (priorFreq.ContainsKey(firstClass))
+                foreach(var cat in item.Categories)
                 {
-                    priorFreq[firstClass] += 1;
-                }
-                else
-                {
-                    priorFreq.Add(firstClass, 1);
+                    if (priorFreq.ContainsKey(cat))
+                    {
+                        priorFreq[cat] += 1;
+                    }
+                    else
+                    {
+                        priorFreq.Add(cat, 1);
+                    }
                 }
             }
 
+            _alphaSize = priorFreq.Sum(x => x.Value);
             _priorProbability = new Dictionary<string, double>();
 
             foreach(var item in priorFreq)
             {
                 _priorProbability.Add(
                     item.Key,
-                    (double) item.Value / learningModel.CategoryClassifierObject.Count
+                    (double) item.Value / _alphaSize
                 );
             }
         }
@@ -86,26 +91,26 @@ namespace LearningBussiness
 
             foreach (var model in learningModel.CategoryClassifierObject)
             {
-                var firstCategory = model.Categories.FirstOrDefault();
-
-                if (!untrainedModel.ContainsKey(firstCategory))
+                foreach(var cat in model.Categories)
                 {
-                    untrainedModel.Add(firstCategory, new Dictionary<int, int>());
-                }
-
-                foreach (var item in model.WordCount)
-                {
-                    if (!untrainedModel[firstCategory].ContainsKey(item.Key))
+                    if (!untrainedModel.ContainsKey(cat))
                     {
-                        untrainedModel[firstCategory].Add(item.Key, item.Value);
+                        untrainedModel.Add(cat, new Dictionary<int, int>());
                     }
-                    else
+
+                    foreach (var item in model.WordCount)
                     {
-                        untrainedModel[firstCategory][item.Key] += item.Value;
+                        if (!untrainedModel[cat].ContainsKey(item.Key))
+                        {
+                            untrainedModel[cat].Add(item.Key, item.Value);
+                        }
+                        else
+                        {
+                            untrainedModel[cat][item.Key] += item.Value;
+                        }
                     }
                 }
             }
-
 
             foreach(var model in untrainedModel)
             {
@@ -121,8 +126,6 @@ namespace LearningBussiness
                     _trainedModel[model.Key].Add(item.Key, (double)item.Value / size);                    
                 }
             }
-
-
         }
 
     }

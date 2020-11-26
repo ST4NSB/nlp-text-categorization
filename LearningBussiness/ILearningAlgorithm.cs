@@ -6,6 +6,6 @@ namespace LearningBussiness
     public interface ILearningAlgorithm
     {
         void Fit(TextModel learningModel);
-        IEnumerable<string> Predict(TextModel testModel); 
+        IEnumerable<PredictedModel> Evaluate(TextModel testModel); 
     }
 }

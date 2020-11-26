@@ -1,0 +1,56 @@
+There are currently 1 unique documents!
+1)
+Categories: NEW PRODUCTS/SERVICES , CORPORATE/INDUSTRIAL , 
+Word Count: 
+	novell : 10
+	inc : 2
+	unveil : 1
+	product : 4
+	tuesday : 1
+	intranetware : 5
+	computer : 1
+	company : 5
+	market : 1
+	network : 7
+	intranet : 2
+	leader : 1
+	netscape : 1
+	communications : 1
+	corp : 2
+	microsoft : 1
+	competition : 1
+	function : 1
+	web : 3
+	line : 1
+	customer : 1
+	future : 2
+	chairman : 1
+	robert : 1
+	frankenberg : 1
+	software : 4
+	user : 1
+	orem : 1
+	utah-based : 1
+	internet : 2
+	access : 2
+	business : 1
+	size : 1
+	feature : 1
+	netware : 3
+	high-performance : 1
+	browser : 1
+	server : 1
+	page : 1
+	advantage : 1
+	standard : 1
+	price : 1
+	plan : 1
+	release : 1
+	fall : 1
+	investment : 1
+	support : 1
+	stock : 1
+	cent : 1
+	afternoon : 1
+	nasdaq : 1
+

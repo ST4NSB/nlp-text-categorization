@@ -1,0 +1,9 @@
+D:\Projects\github\nlp-text-categorization\Evaluation\bin\Debug\Evaluation.dll
+D:\Projects\github\nlp-text-categorization\Evaluation\bin\Debug\Evaluation.pdb
+D:\Projects\github\nlp-text-categorization\Evaluation\bin\Debug\LearningModel.dll
+D:\Projects\github\nlp-text-categorization\Evaluation\bin\Debug\LearningModel.pdb
+D:\Projects\github\nlp-text-categorization\Evaluation\obj\Debug\Evaluation.csprojAssemblyReference.cache
+D:\Projects\github\nlp-text-categorization\Evaluation\obj\Debug\Evaluation.csproj.CoreCompileInputs.cache
+D:\Projects\github\nlp-text-categorization\Evaluation\obj\Debug\Evaluation.csproj.CopyComplete
+D:\Projects\github\nlp-text-categorization\Evaluation\obj\Debug\Evaluation.dll
+D:\Projects\github\nlp-text-categorization\Evaluation\obj\Debug\Evaluation.pdb

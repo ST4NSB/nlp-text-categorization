@@ -16,3 +16,5 @@ D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Nlp-PosT
 D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\LearningBussiness.dll
 D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\LearningBussiness.pdb
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Evaluation.dll
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Evaluation.pdb

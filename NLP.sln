@@ -9,9 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextCategorization", "TextC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Preprocessing", "Preprocessing\Preprocessing.csproj", "{0977237B-D70E-4A80-B063-C6B929D5D50D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningModel", "LearningModel\LearningModel.csproj", "{6C2EFAE1-C614-4489-98BA-D6795BDDD98F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningModels", "LearningModel\LearningModels.csproj", "{6C2EFAE1-C614-4489-98BA-D6795BDDD98F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningBussinessLogic", "LearningBussiness\LearningBussinessLogic.csproj", "{290FA76A-5F8D-45B8-877A-5F8EAE659AAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSection", "LearningBussiness\LearningSection.csproj", "{290FA76A-5F8D-45B8-877A-5F8EAE659AAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluation", "Evaluation\Evaluation.csproj", "{A885B902-5911-48EF-BDAD-0AF997AE9562}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{290FA76A-5F8D-45B8-877A-5F8EAE659AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{290FA76A-5F8D-45B8-877A-5F8EAE659AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{290FA76A-5F8D-45B8-877A-5F8EAE659AAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A885B902-5911-48EF-BDAD-0AF997AE9562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A885B902-5911-48EF-BDAD-0AF997AE9562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A885B902-5911-48EF-BDAD-0AF997AE9562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A885B902-5911-48EF-BDAD-0AF997AE9562}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

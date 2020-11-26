@@ -1,0 +1,97 @@
+There are currently 3 unique documents!
+1)
+Categories: NEW PRODUCTS/SERVICES , CORPORATE/INDUSTRIAL , 
+Word Count: 
+	novell : 2
+	inc : 2
+	unveil : 1
+	product : 1
+	tuesday : 1
+	intranetware : 1
+	computer : 1
+	company : 1
+	market : 1
+	network : 1
+	intranet : 1
+
+2)
+Categories: NEW PRODUCTS/SERVICES , MARKETS/MARKETING , CORPORATE/INDUSTRIAL , 
+Word Count: 
+	netscape : 4
+	phase : 1
+	browser : 4
+	battle : 2
+	internet : 1
+	war : 1
+	monday : 1
+	market : 2
+	leader : 1
+	communications : 2
+	corp : 2
+	navigator : 1
+	software : 1
+	official : 1
+	microsoft : 4
+	counter : 1
+	high-profile : 1
+	explorer : 1
+	week : 2
+	provider : 1
+	york : 1
+	time : 1
+	sportsline : 1
+	usa : 1
+	news : 1
+	information : 1
+	user : 2
+	offer : 1
+	trial : 1
+	subscription : 1
+	wall : 1
+	street : 1
+	journal : 1
+	interactive : 1
+	edition : 1
+	espn : 1
+	sportszone : 1
+	service : 1
+	share : 1
+	percent : 1
+	industry : 1
+	analyst : 1
+	threat : 1
+	dominance : 1
+	field : 1
+	adam : 1
+	schoenfeld : 1
+	jupiter : 1
+	research : 1
+	firm : 1
+
+3)
+Categories: PERFORMANCE , COMMENT/FORECASTS , CORPORATE/INDUSTRIAL , 
+Word Count: 
+	interview : 2
+	compuserve : 3
+	ceo : 1
+	corp : 1
+	president : 1
+	officer : 1
+	bob : 1
+	massey : 2
+	tuesday : 1
+	share : 1
+	loss : 2
+	outlook : 1
+	service : 2
+	firm : 1
+	quarter : 1
+	increase : 1
+	usage : 2
+	information : 1
+	telephone : 1
+	trend : 1
+	member : 2
+	revenue : 1
+	direction : 1
+

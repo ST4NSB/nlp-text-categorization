@@ -49,13 +49,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LearningBussiness\LearningBussinessLogic.csproj">
-      <Project>{290fa76a-5f8d-45b8-877a-5f8eae659aae}</Project>
-      <Name>LearningBussinessLogic</Name>
+    <ProjectReference Include="..\Evaluation\Evaluation.csproj">
+      <Project>{a885b902-5911-48ef-bdad-0af997ae9562}</Project>
+      <Name>Evaluation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LearningModel\LearningModel.csproj">
+    <ProjectReference Include="..\LearningBussiness\LearningSection.csproj">
+      <Project>{290fa76a-5f8d-45b8-877a-5f8eae659aae}</Project>
+      <Name>LearningSection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LearningModel\LearningModels.csproj">
       <Project>{6c2efae1-c614-4489-98ba-d6795bddd98f}</Project>
-      <Name>LearningModel</Name>
+      <Name>LearningModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\Preprocessing\Preprocessing.csproj">
       <Project>{0977237b-d70e-4a80-b063-c6b929d5d50d}</Project>
