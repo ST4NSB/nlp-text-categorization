@@ -1,7 +1,7 @@
 ﻿using LearningModel;
 using System.Collections.Generic;
 
-namespace LearningBussiness
+namespace LearningSection
 {
     public interface ILearningAlgorithm
     {

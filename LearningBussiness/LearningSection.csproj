@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\LearningType.cs" />
     <Compile Include="ILearningAlgorithm.cs" />
+    <Compile Include="KNearestNeighbour.cs" />
+    <Compile Include="LearningFactory.cs" />
     <Compile Include="NaiveBayes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

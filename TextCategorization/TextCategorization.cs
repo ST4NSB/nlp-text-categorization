@@ -9,12 +9,14 @@ using NLP;
 using CategoryConverter;
 using Evaluation;
 using Newtonsoft.Json;
-using LearningBussiness;
+using LearningSection;
+using LearningSection.Data;
 
 namespace NLP.TextCategorization
 {
     public class TextCategorization
     {
+        private ILearningAlgorithm _learningAlg;
         private XmlDocument _xmlDoc;
         private TextModel _textModel;
         private string _path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).
@@ -26,7 +28,7 @@ namespace NLP.TextCategorization
             _textModel = new TextModel();
         }
 
-        public void Process(string dirpath, bool wipeCheckpoints = false)
+        public void Process(LearningType type, string dirpath, bool wipeCheckpoints = false)
         {
             if (wipeCheckpoints)
             {
@@ -61,9 +63,9 @@ namespace NLP.TextCategorization
 
             SplitData(training, testing, testingSize: 30);
 
-            var learn = new NaiveBayes();
-            learn.Fit(training);
-            var res = learn.Evaluate(testing);
+            _learningAlg = LearningFactory.Create(type);
+            _learningAlg.Fit(training);
+            var res = _learningAlg.Evaluate(testing);
 
             Console.WriteLine(EvaluationPhase.GetAccuracy(res));
         }
@@ -100,7 +102,7 @@ namespace NLP.TextCategorization
                 fi.Delete();
             }
 
-            using (File.Create(_path + @"files\model\checkpoints.txt")) ;
+            File.Create(_path + @"files\model\checkpoints.txt");
         }
 
         private string[] LoadCheckpointsAndModel()

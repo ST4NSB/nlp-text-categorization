@@ -1,6 +1,7 @@
 ﻿using NLP.TextCategorization;
 using System;
 using System.Diagnostics;
+using LearningSection.Data;
 
 namespace Demo
 {
@@ -13,7 +14,7 @@ namespace Demo
             //tc.WipeCheckpoints();
 
             var watch = Stopwatch.StartNew();
-            tc.Process(@"Reuters_Small");
+            tc.Process(LearningType.NaiveBayes, @"Reuters_Big");
             watch.Stop();
             
             Console.WriteLine("Time till end: ");

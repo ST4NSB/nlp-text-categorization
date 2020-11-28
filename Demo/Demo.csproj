@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LearningBussiness\LearningSection.csproj">
+      <Project>{290fa76a-5f8d-45b8-877a-5f8eae659aae}</Project>
+      <Name>LearningSection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TextCategorization\TextCategorization.csproj">
       <Project>{f7f9e899-5c3b-4550-b843-da8598dcfd5b}</Project>
       <Name>TextCategorization</Name>
