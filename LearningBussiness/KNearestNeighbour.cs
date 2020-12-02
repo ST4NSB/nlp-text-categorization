@@ -1,3 +1,4 @@
+using LearningModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -5,7 +6,7 @@ using System.Linq;
 
 namespace LearningSection
 {
-    public class KNearestNeighbour
+    public class KNearestNeighbour : ILearningAlgorithm
     {
         private int ConstK;
         private int attrLength;
@@ -18,6 +19,16 @@ namespace LearningSection
 
         private List<List<float>> KnnMatrix;
         public List<string> knnTestTagsClasses;
+
+        public void Fit(TextModel learningModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<PredictedModel> Evaluate(TextModel testModel)
+        {
+            throw new NotImplementedException();
+        }
 
         public void SetK(int ConstK)
         {
@@ -351,5 +362,6 @@ namespace LearningSection
                 knnTestTagsClasses.Add(tagClass);
             }
         }
+
     }
 }

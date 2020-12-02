@@ -57,7 +57,7 @@ namespace NLP.TextCategorization
                 SaveCheckpointModel(fileName);
             }
 
-           // ShuffleData();
+            ShuffleData();
             var training = new TextModel();
             var testing = new TextModel();
 

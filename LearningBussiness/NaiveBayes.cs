@@ -8,6 +8,7 @@ namespace LearningSection
     public class NaiveBayes : ILearningAlgorithm
     {
         private const int _alpha = 1;
+        private const float _threshold = 1E-1f;
         private int _alphaSize;
 
         private Dictionary<string, double> _priorProbability;
@@ -33,18 +34,34 @@ namespace LearningSection
                     {
                         if (tmodel.Value.ContainsKey(item.Key))
                         {
-                            proc = proc * Math.Log(tmodel.Value[item.Key]);
+                            //P(f) = log(P(1) * P(2) *P(3)...) = 
+                            // log(x*y) = log(x) + log(y)
+                            // log(X*y) = log(x) * log(y)  !!! FALSE
+                            proc = proc + (Math.Log(tmodel.Value[item.Key]));
                         }
                         else
                         {
-                            proc = proc * Math.Log(((double)_alpha / (_alpha * Math.Pow(_alphaSize, 5))));
+                            proc = proc + Math.Log(((double)_alpha / (_alpha * _alphaSize)));
                         }
                     }
                     predictedClasses.Add(tmodel.Key, proc);
                 }
 
                 var ordered = predictedClasses.OrderByDescending(x => x.Value);
+
                 var acPred = new List<string> { ordered.ElementAt(0).Key };
+                for (var i = 0; i < ordered.Count() - 1; i++)
+                {
+                    var diff = Math.Abs(ordered.ElementAt(i).Value - ordered.ElementAt(i + 1).Value);
+                    if (diff <= _threshold)
+                    {
+                        acPred.Add(ordered.ElementAt(i + 1).Key);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
 
                 yield return new PredictedModel
                 {
@@ -123,7 +140,7 @@ namespace LearningSection
 
                 foreach(var item in model.Value)
                 {
-                    _trainedModel[model.Key].Add(item.Key, (double)item.Value / size);                    
+                    _trainedModel[model.Key].Add(item.Key, (double)(item.Value + _alpha) / (size + (_alpha * _alphaSize)));                    
                 }
             }
         }
