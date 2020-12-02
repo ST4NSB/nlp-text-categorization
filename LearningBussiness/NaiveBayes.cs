@@ -8,7 +8,7 @@ namespace LearningSection
     public class NaiveBayes : ILearningAlgorithm
     {
         private const int _alpha = 1;
-        private const float _threshold = 1E-1f;
+        private const float _threshold = 0.001f;
         private int _alphaSize;
 
         private Dictionary<string, double> _priorProbability;

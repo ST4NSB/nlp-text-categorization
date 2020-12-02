@@ -12,11 +12,8 @@ namespace Evaluation
             var all = 0;
             foreach(var item in results)
             {
-                foreach(var pred in item.predicted)
+                foreach (var pred in item.predicted)
                 {
-                    //Console.WriteLine("pred: " + pred + "  -  ");
-                    //item.actual.ForEach(x => Console.WriteLine(x));
-
                     if (item.actual.Contains(pred))
                     {
                         correct++;

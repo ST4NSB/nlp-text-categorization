@@ -7,3 +7,5 @@ D:\Projects\github\nlp-text-categorization\Evaluation\obj\Debug\Evaluation.cspro
 D:\Projects\github\nlp-text-categorization\Evaluation\obj\Debug\Evaluation.csproj.CopyComplete
 D:\Projects\github\nlp-text-categorization\Evaluation\obj\Debug\Evaluation.dll
 D:\Projects\github\nlp-text-categorization\Evaluation\obj\Debug\Evaluation.pdb
+D:\Projects\github\nlp-text-categorization\Evaluation\bin\Debug\System.ValueTuple.dll
+D:\Projects\github\nlp-text-categorization\Evaluation\bin\Debug\System.ValueTuple.xml

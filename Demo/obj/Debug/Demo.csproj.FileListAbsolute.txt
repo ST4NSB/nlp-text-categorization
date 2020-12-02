@@ -21,3 +21,5 @@ D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\LearningBussiness.dll
 D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\LearningBussiness.pdb
 D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Evaluation.dll
 D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\Evaluation.pdb
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\System.ValueTuple.dll
+D:\Projects\github\nlp-text-categorization\Demo\bin\Debug\System.ValueTuple.xml

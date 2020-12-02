@@ -11,16 +11,17 @@ namespace Demo
         {
             TextCategorization tc = new TextCategorization();
 
-            //tc.WipeCheckpoints();
-
             var watch = Stopwatch.StartNew();
-            tc.Process(LearningType.NaiveBayes, @"Reuters_Big");
+            var accuracy = 0.0f;
+            tc.Process(LearningType.NaiveBayes, @"Reuters_Big", out accuracy);
             watch.Stop();
+
+            Console.WriteLine("\r\nAccuracy: " + accuracy * 100.0f + " %\r\n");
             
-            Console.WriteLine("Time till end: ");
-            Console.WriteLine("Minutes: " + watch.Elapsed.TotalMinutes);
-            Console.WriteLine("Seconds: " + watch.Elapsed.TotalSeconds);
-            Console.WriteLine("Milliseconds: " + watch.Elapsed.TotalMilliseconds);
+            //Console.WriteLine("Time till end: ");
+            //Console.WriteLine("Minutes: " + watch.Elapsed.TotalMinutes);
+            //Console.WriteLine("Seconds: " + watch.Elapsed.TotalSeconds);
+            //Console.WriteLine("Milliseconds: " + watch.Elapsed.TotalMilliseconds);
         }
     }
 }

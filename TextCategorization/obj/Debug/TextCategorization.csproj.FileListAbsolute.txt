@@ -18,3 +18,5 @@ D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Learning
 D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\LearningBussiness.pdb
 D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Evaluation.dll
 D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\Evaluation.pdb
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\System.ValueTuple.dll
+D:\Projects\github\nlp-text-categorization\TextCategorization\bin\Debug\System.ValueTuple.xml

@@ -28,7 +28,7 @@ namespace NLP.TextCategorization
             _textModel = new TextModel();
         }
 
-        public void Process(LearningType type, string dirpath, bool wipeCheckpoints = false)
+        public void Process(LearningType type, string dirpath, out float accuracy, bool wipeCheckpoints = false)
         {
             if (wipeCheckpoints)
             {
@@ -65,9 +65,31 @@ namespace NLP.TextCategorization
 
             _learningAlg = LearningFactory.Create(type);
             _learningAlg.Fit(training);
-            var res = _learningAlg.Evaluate(testing);
+            var res = _learningAlg.Evaluate(testing).ToList();
 
-            Console.WriteLine(EvaluationPhase.GetAccuracy(res));
+            accuracy = EvaluationPhase.GetAccuracy(res);
+
+            //var confMat = EvaluationPhase.GetConfusionMatrix(res);
+            //SaveResultScoreToCsv(confMat);
+        }
+
+        private void SaveResultScoreToCsv(Dictionary<string, (float, float, float, float, float, int, int, int, int)> confMat)
+        {
+            var date = DateTime.Now.ToString("dd MMMM yyyy, HH.mm.ss");
+            var file = $"results_{date}.csv";
+            using (var w = new StreamWriter(_path + @"\files\model\results\" + file))
+            {
+                w.WriteLine("Class,Accuracy,Specificity,Precision,Recall,F1-Score,,tp,fp,tn,fn");
+                foreach(var item in confMat)
+                {
+                    var line = $"{item.Key},{Math.Round(item.Value.Item1 * 100.0f, 2)},{Math.Round(item.Value.Item2 * 100.0f, 2)}," +
+                        $"{Math.Round(item.Value.Item3 * 100.0f, 2)},{Math.Round(item.Value.Item4 * 100.0f, 2)}," +
+                        $"{Math.Round(item.Value.Item5 * 100.0f, 2)},,{item.Value.Item6},{item.Value.Item7}," +
+                        $"{item.Value.Item8},{item.Value.Item9},";
+                    w.WriteLine(line);
+                    w.Flush();
+                }
+            }
         }
 
         private void ShuffleData()
@@ -86,7 +108,7 @@ namespace NLP.TextCategorization
             training.CategoryClassifierObject = _textModel.CategoryClassifierObject.Skip(testingSampleSize).ToList();
         }
 
-        public void WipeCheckpoints()
+        private void WipeCheckpoints()
         {
             var dir = new DirectoryInfo(_path + @"files\model");
 
@@ -276,9 +298,7 @@ namespace NLP.TextCategorization
 
         private void CreateAndWriteToTextFile(string filename, List<string> text)
         {
-            var date = DateTime.Now.ToString().Replace('/', '-')
-                                              .Replace(':', '-')
-                                              .Replace(' ', '_');
+            var date = DateTime.Now.ToString("dd MMMM yyyy, HH.mm.ss");
             var guid = _path + @"files\model\processed\[" + date + "]" + filename + ".txt";
             using (TextWriter tw = new StreamWriter(guid))
             {
